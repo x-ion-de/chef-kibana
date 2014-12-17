@@ -91,6 +91,7 @@ kibana_web 'kibana' do
   docroot docroot
   es_server node['kibana']['es_server']
   kibana_port node['kibana']['java_webserver_port']
-  template 'kibana-nginx_file.conf.erb'
+  template node['kibana']['nginx']['template']
+  template_cookbook node['kibana']['nginx']['template_cookbook']
   not_if { node['kibana']['webserver'].empty? }
 end
